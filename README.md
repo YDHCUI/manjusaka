@@ -10,7 +10,7 @@
 
 
 
-# CowExcrementFlower
+# manjusaka
 牛屎花  一款基于WEB界面的仿CobaltStrike C2远控 
 
 ##系统架构： ![164759109](https://user-images.githubusercontent.com/46884495/159195361-cc3b75f1-ab5e-425b-a3b3-65d65878c048.jpg)

@@ -13,7 +13,7 @@
 # manjusaka
 牛屎花  一款基于WEB界面的仿CobaltStrike C2远控 
 
-##系统架构： ![](https://github.com/YDHCUI/manjusaka/blob/main/images/1.jpg)
+##系统架构： ![](https://github.com/YDHCUI/manjusaka/blob/main/images/0.jpg)
 
 ## 使用方法
 ```bash

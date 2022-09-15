@@ -1,0 +1,8 @@
+[target.x86_64-pc-windows-gnu]
+rustflags = [
+  "-C", "link-arg=s",
+]
+[target.x86_64-pc-windows-msvc]
+rustflags = [
+  "-C", "link-arg=/DEBUG:NONE",
+]

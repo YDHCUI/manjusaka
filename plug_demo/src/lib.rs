@@ -6,8 +6,8 @@ use protobuf::Message;
 use protobuf::RepeatedField;
 
 #[no_mangle]
-pub unsafe extern "C" fn plugmain(s: *const c_char) -> *const c_char { 
-    let r_str = CStr::from_ptr(s).to_str().unwrap();
+pub unsafe extern "C" fn plugmain(args: *const c_char) -> *const c_char { 
+    let args = CStr::from_ptr(args).to_str().unwrap();
 
     let mut prs = Vec::<plug::PassResult>::new();
     prs.push(plug::PassResult::new());

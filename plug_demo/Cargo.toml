@@ -16,4 +16,7 @@ crate-type = ["cdylib"]
 
 
 [dependencies]
+protobuf = "2.27.1"
 
+[build-dependencies]
+protobuf-codegen-pure = "2.27.1"

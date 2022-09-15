@@ -70,14 +70,14 @@ dll.main()
 
 
 4、插件系统 生成dll/so插件, 以plug_name_nps.dll格式命名放到plugins文件夹下面 即可动态调用
-插件开发示例, main传入插件运行参数 传出返回的内容值 
+插件开发示例, plugmain传入插件运行参数 传出返回的内容值 
 ```rust
-/* 
 //./Cargo.toml
+
 [lib]
 path = "src/lib.rs"
 crate-type = ["cdylib"]
-*/
+
 
 //src/lib.rs
 
@@ -85,66 +85,88 @@ use std::ffi::CStr;
 use std::ffi::CString;
 use std::os::raw::c_char;
 
-#[no_mangle]
-pub unsafe extern "C" fn main(args: *const c_char) -> *const c_char { 
-    let r_str = CStr::from_ptr(args).to_str().unwrap();
+use protobuf::Message;
+use protobuf::RepeatedField;
 
-    println!("plugin load args: {}", r_str);
-    let c_str = format!("plugin return {}",r_str);
+#[no_mangle]
+pub unsafe extern "C" fn plugmain(s: *const c_char) -> *const c_char { 
+    let r_str = CStr::from_ptr(s).to_str().unwrap();
+
+    let mut prs = Vec::<plug::PassResult>::new();
+    prs.push(plug::PassResult::new());
+    
+    let mut gret = plug::PlugResult{
+        name: "test".to_string(),
+        args: args.to_string(),
+        resulttype: plug::ResultType::PASSRET,
+        ..Default::default()
+    };
+    gret.set_passresult(RepeatedField::from_vec(prs));
+
+    let c_str = gret.write_to_bytes().expect("protobuf to bytes err");
+
 
     CString::new(c_str).expect("CString failed").into_raw()
 }
+
 
 ```
 返回值匹配到如下protobuf格式后后将结果写入数据库
 
 ```protobuf
+
 syntax = "proto3";
 
-message PassResult{
+
+enum ResultType {
+    PASSRET = 0;
+    PORTRET = 1;
+    HTTPRET = 2;
+}
+
+message PassResult {
     string username = 1;
     string password = 2;
     string passtype = 3;
     string passfrom = 4;
 }
 
-message PassScan{
-    string hosts = 1;
-    string ports = 2;
-    string args = 3;
-    repeated PortResult result = 4;
-}
-
-message PortResult{
+message PortResult {
     string host = 1;
-    string port = 2;
+    int32 port = 2;
     string proto = 3;
     string version = 4;
 }
-message PortScan{
-    string hosts = 1;
-    string ports = 2;
-    string args = 3;
-    repeated PortResult result = 4;
-}
-message HttpResult{
+
+message HttpResult {
     string proto = 1;
     string host = 2;
-    string port = 3;
+    int32 port = 3;
     string title = 4;
     string note = 5;
 }
-message HttpScan{
-    string hosts = 1;
-    string ports = 2;
-    string args = 3;
-    repeated PortResult result = 4;
+
+message PlugResult {
+    string name = 1;
+    string args = 2;
+    ResultType resulttype = 3;
+    repeated PassResult passresult = 11;
+    repeated PortResult portresult = 12;
+    repeated HttpResult httpresult = 13;
 }
 
 ```
-
  
 ## 更新
+
+### 0.6 todo
+
+1、npc.exe分阶段加载，完成npc.ps1 和 npc.sh
+
+2、更新getinfo，useoss，useproxy等插件 
+
+3、rust重写nps？ 
+
 
 ### v0.5
 1、修复安全漏洞

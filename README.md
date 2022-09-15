@@ -13,7 +13,7 @@
 # manjusaka
 牛屎花  一款基于WEB界面的仿CobaltStrike C2远控 
 
-##系统架构： ![](https://github.com/YDHCUI/manjusaka/blob/mainimages/1.jpg?raw=true)
+##系统架构： ![](https://github.com/YDHCUI/manjusaka/blob/mainimages/1.jpg)
 
 ## 使用方法
 ```bash
@@ -33,7 +33,7 @@
 
 1、创建项目，默认有一个公共项目，选择当前项目后 可在回传结果里面查看当前项目回传的信息
 
-![](https://github.com/YDHCUI/manjusaka/blob/mainimages/1.jpg?raw=true)
+![](https://github.com/YDHCUI/manjusaka/blob/mainimages/1.jpg)
 
 
 2、根据项目 生成npc 可以直接使用exe或elf格式的npc。也可以使用其它语言加载npc母体 比如使用python加载npc
@@ -52,21 +52,21 @@ dll.main()
 ```
 
 
-![](https://github.com/YDHCUI/manjusaka/blob/mainimages/2.jpg?raw=true)
+![](https://github.com/YDHCUI/manjusaka/blob/mainimages/2.png)
 
 3、npc上线，点选中该npc即可对其进行操作
 
-![](https://github.com/YDHCUI/manjusaka/blob/mainimages/3.jpg?raw=true)
+![](https://github.com/YDHCUI/manjusaka/blob/mainimages/3.png)
 
-![](https://github.com/YDHCUI/manjusaka/blob/mainimages/4.jpg?raw=true)
+![](https://github.com/YDHCUI/manjusaka/blob/mainimages/4.png)
 
-![](https://github.com/YDHCUI/manjusaka/blob/mainimages/5.jpg?raw=true)
+![](https://github.com/YDHCUI/manjusaka/blob/mainimages/5.png)
 
-![](https://github.com/YDHCUI/manjusaka/blob/mainimages/6.jpg?raw=true)
+![](https://github.com/YDHCUI/manjusaka/blob/mainimages/6.png)
 
-![](https://github.com/YDHCUI/manjusaka/blob/mainimages/7.jpg?raw=true)
+![](https://github.com/YDHCUI/manjusaka/blob/mainimages/7.png)
 
-![](https://github.com/YDHCUI/manjusaka/blob/mainimages/8.jpg?raw=true)
+![](https://github.com/YDHCUI/manjusaka/blob/mainimages/8.png)
 
 
 4、插件系统 生成dll/so插件, 以plug_name_nps.dll格式命名放到plugins文件夹下面 即可动态调用

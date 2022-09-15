@@ -33,7 +33,7 @@
 
 1、创建项目，默认有一个公共项目，选择当前项目后 可在回传结果里面查看当前项目回传的信息
 
-![](https://github.com/YDHCUI/manjusaka/blob/mainimages/1.jpg)
+![](https://github.com/YDHCUI/manjusaka/blob/mainimages/1.png)
 
 
 2、根据项目 生成npc 可以直接使用exe或elf格式的npc。也可以使用其它语言加载npc母体 比如使用python加载npc

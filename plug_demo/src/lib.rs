@@ -1,3 +1,5 @@
+mod plug;
+
 use std::ffi::CStr;
 use std::ffi::CString;
 use std::os::raw::c_char;

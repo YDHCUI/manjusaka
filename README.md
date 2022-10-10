@@ -156,16 +156,26 @@ message PlugResult {
 }
 
 ```
+
  
 ## 更新
 
-### 0.6 todo
+### todo
+添加 PPID spoofer 支持
 
-1、npc.exe分阶段加载，完成npc.ps1 和 npc.sh
 
-2、更新getinfo，useoss，useproxy等插件 
+### v0.6
+1、插件支持可执行文件
 
-3、rust重写nps？ 
+2、修复文件上传跨域bug
+
+3、登录验证码，cookie时效机制
+
+4、修复sh 执行命令不能加参数的bug 
+
+5、优化npc体积 
+
+6、更新kzta 系统密码读取插件，更新qvte键盘记录插件 
 
 
 ### v0.5

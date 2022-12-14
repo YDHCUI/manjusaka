@@ -35,6 +35,18 @@
 
 1、创建项目，默认有一个公共项目，通过项目【状态】开关可以控制项目是否启用状态。选择当前项目后 可在回传结果里面查看当前项目回传的信息。
 
+新建项目 配置需要填写以下项：
+
+项目名称: 随便写 hvv2022
+
+回调地址: 外网IP和端口  http://12.34.56.78:8080
+
+上线域名: cdn域名 如果没有上cdn则填写和回调地址一样
+
+Host    : cdn上线时所需要的host请求头 
+
+其它都会默认生成，点击确定更新之后需要刷新列表重新启用项目状态。
+
 ![](https://github.com/YDHCUI/manjusaka/blob/main/images/1.png)
 
 
@@ -83,17 +95,6 @@ inject    注入进程 eg: inject pid <shellcodeurl>  shellcodeurl可选 默认�
 
 ```
 
-新建项目 配置需要填写以下项：
-
-项目名称: 随便写 hvv2022
-
-回调地址: 外网IP和端口  http://12.34.56.78:8080
-
-上线域名: cdn域名 如果没有上cdn则填写和回调地址一样
-
-Host    : cdn上线时所需要的host请求头 
-
-其它都会默认生成，点击确定更新之后需要刷新列表重新启用项目状态。
 
 ![](https://github.com/YDHCUI/manjusaka/blob/main/images/3.png)
 

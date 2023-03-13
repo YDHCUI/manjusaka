@@ -224,9 +224,11 @@ message PlugResult {
 
 ```
 
-5、 上线提醒功能 需要在conf里面配置一下webhook
+5、 上线提醒功能，需要在conf里面配置一下webhook。
+
 demo里用的是wxpusher的方案，可以自己改 但是目前只支持POST模式。
-body里面的模板支持以下变量
+
+body里面的模板支持以下变量(注意:变量为未经过滤的原始字符，可能存在xss风险。)
 ```
 {Id}
 {Target}

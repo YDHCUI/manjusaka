@@ -131,6 +131,7 @@ args = "all"
 ```
 [plug.doglite]
 args = "-service xx.xx.xx.xx:xx -action socks5  -local :40004 -r"
+
 ``` 
 在信息页点选该插件运行，或在命令行输入 start doglite 即可启动该插件。
 
@@ -223,6 +224,24 @@ message PlugResult {
 
 ```
 
+5、 上线提醒功能 需要在conf里面配置一下webhook
+demo里用的是wxpusher的方案，可以自己改 但是目前只支持POST模式。
+body里面的模板支持以下变量
+```
+{Id}
+{Target}
+{Intranet}
+{Username}
+{Hostname}
+{Platform}
+{Process}
+{Pid}
+{Systype}
+{Internet}
+{Note}
+{Projname}
+{Projroute}
+```
 
 
 ## 更新
@@ -306,3 +325,4 @@ message PlugResult {
 ## 交流
 https://discord.gg/YMqeN5Qyk4
 
+![1678687517388](https://user-images.githubusercontent.com/46884495/224620568-d4fd64ba-d005-48d8-b120-302c9811a2f7.png)

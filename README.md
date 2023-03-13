@@ -204,7 +204,20 @@ message PlugResult {
 
 ```
 
- 
+插件可在conf中配置默认启动参数，示例中有一个getpass插件 默认参数为all
+```
+[plug.getpass]
+args = "all"
+
+```
+比如现在我想将doglite作为插件启动 则需要将doglite命名为plug_doglite_nps.exe放入plugins文件夹并在conf中配置参数如下
+```
+[plug.doglite]
+args = "-service xx.xx.xx.xx:xx -action socks5  -local :40004 -r"
+``` 
+在信息页点选该插件运行，或在命令行输入 start doglite 即可启动该插件。
+
+
 ## 更新
 
 ### v0.8 
@@ -224,8 +237,7 @@ message PlugResult {
 
 3、优化npu推送模式, 修复大量npc时的npu卡顿问题 
 
-4、新增进程注入命令 简单实现 CopySelf（copyself会报毒慎用...待优化）
-https://github.com/malware-unicorn/rusty-memory-loadlibrary/blob/9eddd40949515733239f94df6499d2cded08ec84/src/main.rs
+4、新增进程注入命令 简单实现 CopySelf
 
 5、配置文件加密，配置分阶段加载。
 

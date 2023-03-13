@@ -116,7 +116,26 @@ inject    注入进程 eg: inject pid <shellcodeurl>                shellcodeurl
 ![](https://github.com/YDHCUI/manjusaka/blob/main/images/8.png)
 
 
-4、插件系统 生成dll/so插件, 以plug_name_nps.dll格式命名放到plugins文件夹下面 即可动态调用
+4、插件系统 分为第三方程序的调用和内置插件
+
+插件可在conf中配置默认启动参数，示例中有一个getpass插件 默认参数为all
+```
+[plug.getpass]
+args = "all"
+
+```
+
+第三方程序的调用 比如现在我想将doglite作为插件启动 
+
+则需要将doglite命名为plug_doglite_nps.exe放入plugins文件夹并在conf中配置参数如下
+```
+[plug.doglite]
+args = "-service xx.xx.xx.xx:xx -action socks5  -local :40004 -r"
+``` 
+在信息页点选该插件运行，或在命令行输入 start doglite 即可启动该插件。
+
+内置插件，生成dll/so插件, 以plug_name_nps.dll格式命名放到plugins文件夹下面 在命令行输入 pl getpass 即可动态调用
+
 插件开发示例, plugmain传入插件运行参数 传出返回的内容值 
 ```rust
 //./Cargo.toml
@@ -204,18 +223,6 @@ message PlugResult {
 
 ```
 
-插件可在conf中配置默认启动参数，示例中有一个getpass插件 默认参数为all
-```
-[plug.getpass]
-args = "all"
-
-```
-比如现在我想将doglite作为插件启动 则需要将doglite命名为plug_doglite_nps.exe放入plugins文件夹并在conf中配置参数如下
-```
-[plug.doglite]
-args = "-service xx.xx.xx.xx:xx -action socks5  -local :40004 -r"
-``` 
-在信息页点选该插件运行，或在命令行输入 start doglite 即可启动该插件。
 
 
 ## 更新

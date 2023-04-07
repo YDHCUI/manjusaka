@@ -30,14 +30,12 @@
 [NPS] 2022/09/14 15:57:21 NPC文件路由 : /images/:fid/logo.png
 ```
 则NPS访问地址为  http://192.168.93.217:3200/manjusaka  
-账号密码见初始日志，每个人生成的密码及默认路由都不一样 如需修改 请自行编辑nps.db文件
+账号密码见初始日志，每个人生成的密码及默认路由都不一样 如需修改 请自行编辑nps.db文件 
 
 
 1、创建项目，默认有一个公共项目，通过项目【状态】开关可以控制项目是否启用状态。选择当前项目后 可在回传结果里面查看当前项目回传的信息。
 
 新建项目 配置需要填写以下项：
-
-项目名称: 随便写 如：hvv2022
 
 项目名称: 随便写 如 hvv2022
 
@@ -45,11 +43,9 @@
 
 上线域名: cdn域名 如 http://imagecdn2.alicdn.com  如果没有上cdn则填写和回调地址一样
 
-Host头  : cdn上线时所需要的host请求头 
+Host头  : cdn上线时所需要的host请求头 如 update.baiduimage.com  默认为上线域名
 
-代理地址: NPC上线时如果需要走代理，在这里配置。比如我测试用的clash，代理配置为http://192.168.93.1:7890
-
-Host    : cdn上线时所需要的host请求头 如 update.baiduimage.com  默认为上线域名
+代理地址: NPC上线时如果需要走代理，在这里配置。比如我测试用的clash，代理配置为http://192.168.93.1:7890 详见：https://docs.rs/reqwest/0.11.16/reqwest/struct.Proxy.html
 
 其它都会默认生成，点击确定更新之后需要刷新列表重新启用项目状态。
 
@@ -226,6 +222,21 @@ message PlugResult {
 
 5、 上线提醒功能，需要在conf里面配置一下webhook。
 
+```
+[webhook] 
+method = "POST" 
+url = "https://wxpusher.zjiecode.com/api/send/message"
+headers = "Content-Type:application/json" #多个header以\n分割
+body = """{
+  "appToken":"AT_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+  "content":"{Projname} {Projroute}  \\n{Username} {Hostname}  \\n{Intranet} {Internet}  \\n{Pid} {Process}",
+  "summary":"您有新的肉鸡上线啦！{Username} {Hostname}",
+  "contentType":3,
+  "uids":["UID_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"]}"""
+
+
+```
+
 demo里用的是wxpusher的方案，可以自己改 但是目前只支持POST模式。
 
 body里面的模板支持以下变量(注意:变量为未经过滤的原始字符，可能存在xss风险。)
@@ -247,6 +258,18 @@ body里面的模板支持以下变量(注意:变量为未经过滤的原始字�
 
 
 ## 更新
+
+### v0.9
+1、插件改为内存加载，无文件落地（仅windows，unix暂未实现）。 
+
+2、去除了npc获取公网地址项。。。(容易报毒)。
+
+3、支持socks5代理上线，修改加密算法为aes。 修改npu推送间隔为60s。  
+
+4、修复npc列表界面位移，支持备注功能。 
+
+5、去除了没啥卵用的功能，修复其它bug。
+
 
 ### v0.8 
 1、获取真实公网地址、并展示IP归属 , 密码加密，上线提醒功能 
@@ -295,7 +318,7 @@ body里面的模板支持以下变量(注意:变量为未经过滤的原始字�
 
 4、增加动态插件功能，可拓展更多功能 
 
-5、去除特征、修复bug 
+5、去除特征、修复bug  
 
 
 ### v0.4

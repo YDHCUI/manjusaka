@@ -349,4 +349,5 @@ body里面的模板支持以下变量(注意:变量为未经过滤的原始字�
 ## 交流
 https://discord.gg/YMqeN5Qyk4
 
-![1678687517388](https://user-images.githubusercontent.com/46884495/224620568-d4fd64ba-d005-48d8-b120-302c9811a2f7.png)
+![f00026c92f3353c468ed6e97276f52f](https://user-images.githubusercontent.com/46884495/230539421-366acb18-77db-48b7-8ffd-982f59d3ea6f.jpg)
+

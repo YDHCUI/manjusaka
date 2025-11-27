@@ -14,36 +14,45 @@
 牛屎花  一款基于rust开发的远程主机管理系统
 
 
-## 使用方法
+## 功能截图
 
-### 登录地址:
+### NPS登录地址
 ![](https://github.com/YDHCUI/manjusaka/blob/main/images/1.png)
 
-
+### 创建目标项目
 ![](https://github.com/YDHCUI/manjusaka/blob/main/images/2.png)
 
+### 主机管理界面
 ![](https://github.com/YDHCUI/manjusaka/blob/main/images/3.png)
 
+### 主机操作界面
 ![](https://github.com/YDHCUI/manjusaka/blob/main/images/4.png)
 
+### NPC2虚拟终端
 ![](https://github.com/YDHCUI/manjusaka/blob/main/images/5.png)
 
+### NPC2文件管理
 ![](https://github.com/YDHCUI/manjusaka/blob/main/images/6.png)
 
+### 生成agent
 ![](https://github.com/YDHCUI/manjusaka/blob/main/images/7.png)
 
+### 新建隧道代理
 ![](https://github.com/YDHCUI/manjusaka/blob/main/images/8.png)
 
+### 查看已有隧道
+![](https://github.com/YDHCUI/manjusaka/blob/main/images/9.png)
 
 
 ## 更新
 
 ### v1.0
-1、完全使用rust重构、支持tcp，分段加载，交互shell
-
+1、rust重构、支持tcp，分段加载，交互shell
+2、。。。更新中
 
 ## 体验地址
-    
+   
+
 
 ## 交流
 

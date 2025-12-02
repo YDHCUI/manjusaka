@@ -11,7 +11,11 @@
 
 
 # manjusaka
-牛屎花  一款基于rust开发的远程主机管理系统
+
+	牛屎花  一款基于rust开发的远程主机管理系统
+
+	https://github.com/ydhcui/manjusaka
+
 
 
 ## 功能截图

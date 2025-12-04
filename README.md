@@ -12,10 +12,23 @@
 
 # manjusaka
 
-	牛屎花  一款基于rust开发的远程主机管理系统
+https://github.com/ydhcui/manjusaka
 
-	https://github.com/ydhcui/manjusaka
 
+
+
+## 牛屎花  
+一款基于rust开发的远程主机管理系统
+
+
+## 使用方法
+1、添加监听器，上线地址改为外网IP
+
+2、添加项目，回调地址改为外网IP，连接地址选刚才设置的监听器。
+
+3、生成npc1 运行上线。
+
+4、上线后连接npc1 加载npc2 等待回连。
 
 
 ## 功能截图
@@ -51,8 +64,11 @@
 ## 更新
 
 ### v1.0
-1、rust重构、支持tcp，分段加载，交互shell
-2、 接入51.la统计。
+1、 rust重构、支持tcp，分段加载，交互shell
+2、 动态修改监听器
+3、 nps支持https
+4、 推送方式改回ws 
+5、 修复漏洞
 
 ## 体验地址
    

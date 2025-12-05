@@ -22,6 +22,7 @@ https://github.com/ydhcui/manjusaka
 
 
 ## 使用方法
+
 1、添加监听器，上线地址改为外网IP
 
 2、添加项目，回调地址改为外网IP，连接地址选刚才设置的监听器。
@@ -65,10 +66,15 @@ https://github.com/ydhcui/manjusaka
 
 ### v1.0
 1、 rust重构、支持tcp，分段加载，交互shell
+
 2、 动态修改监听器
+
 3、 nps支持https
+
 4、 推送方式改回ws 
+
 5、 修复漏洞
+
 
 ## 体验地址
    

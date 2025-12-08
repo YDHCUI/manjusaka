@@ -32,9 +32,15 @@ https://github.com/ydhcui/manjusaka
 4、上线后连接npc1 加载npc2 等待回连。
 
 
+默认登录地址为: https://192.168.93.1:33000/manjusaka/static/
+
+
 ## 功能截图
 
 ### NPS登录地址
+![](https://github.com/YDHCUI/manjusaka/blob/main/images/0.png)
+
+### 创建监听器
 ![](https://github.com/YDHCUI/manjusaka/blob/main/images/1.png)
 
 ### 创建目标项目

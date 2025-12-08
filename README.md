@@ -61,6 +61,9 @@ https://github.com/ydhcui/manjusaka
 ### 查看已有隧道
 ![](https://github.com/YDHCUI/manjusaka/blob/main/images/9.png)
 
+### VNC查看远程桌面
+![](https://github.com/YDHCUI/manjusaka/blob/main/images/10.png)
+
 
 ## 更新
 
@@ -74,6 +77,8 @@ https://github.com/ydhcui/manjusaka
 4、 推送方式改回ws 
 
 5、 修复漏洞
+
+6、 优化ui布局， 增加vnc查看功能 251208
 
 
 ## 体验地址

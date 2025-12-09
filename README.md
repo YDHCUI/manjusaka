@@ -86,6 +86,7 @@ https://github.com/ydhcui/manjusaka
 
 6、 优化ui布局， 增加vnc查看功能 251208
 
+7、 卸载npc2、vnc界面自适应 20251209 
 
 ## 体验地址
    

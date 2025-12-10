@@ -16,7 +16,6 @@ https://github.com/ydhcui/manjusaka
 
 
 
-
 ## 牛屎花  
 一款基于rust开发的远程主机管理系统
 
@@ -46,29 +45,30 @@ https://github.com/ydhcui/manjusaka
 ### 创建目标项目
 ![](https://github.com/YDHCUI/manjusaka/blob/main/images/2.png)
 
-### 主机管理界面
+### 管理界面
 ![](https://github.com/YDHCUI/manjusaka/blob/main/images/3.png)
 
-### 主机操作界面
+### 操作界面
 ![](https://github.com/YDHCUI/manjusaka/blob/main/images/4.png)
 
-### NPC2虚拟终端
+### 虚拟终端
 ![](https://github.com/YDHCUI/manjusaka/blob/main/images/5.png)
 
-### NPC2文件管理
+### 虚拟桌面
+![](https://github.com/YDHCUI/manjusaka/blob/main/images/10.png)
+
+### 文件管理
 ![](https://github.com/YDHCUI/manjusaka/blob/main/images/6.png)
 
 ### 生成agent
 ![](https://github.com/YDHCUI/manjusaka/blob/main/images/7.png)
 
-### 新建隧道代理
+### 新建隧道
 ![](https://github.com/YDHCUI/manjusaka/blob/main/images/8.png)
 
-### 查看已有隧道
+### 查看隧道
 ![](https://github.com/YDHCUI/manjusaka/blob/main/images/9.png)
 
-### VNC查看远程桌面
-![](https://github.com/YDHCUI/manjusaka/blob/main/images/10.png)
 
 
 ## 更新
@@ -87,6 +87,10 @@ https://github.com/ydhcui/manjusaka
 6、 优化ui布局， 增加vnc查看功能 251208
 
 7、 卸载npc2、vnc界面自适应 20251209 
+
+8、 加入vnc远程控制模式、优化vnc图像更新机制、优化界面 20251210 
+
+
 
 ## 体验地址
    

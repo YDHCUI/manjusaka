@@ -1,0 +1,1 @@
+import{ah as n}from"./index-Ba2EZ1Zo.js";function o(t={}){return n.post("/listenlist",t)}function i(t){return n.post("/listendelete",{id:t})}function l(t){return n.post("/listenupdate",t)}function r(t,e){return n.post("/listenaction",{id:t,isrun:e})}function a(t){return n.post("/npc2download",t,{responseType:"blob"})}export{r as a,i as b,l as c,o as l,a as n};

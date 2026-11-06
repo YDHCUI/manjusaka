@@ -1,20 +1,10 @@
-<template>
-  <ConfigProvider :locale="getAntdLocale">
-    <AppProvider>
-      <RouterView />
-    </AppProvider>
-  </ConfigProvider>
-</template>
+<script setup>
 
-<script lang="ts" setup>
-import { ConfigProvider } from "ant-design-vue";
-import { AppProvider } from "/@/components/Application";
-import { useTitle } from "/@/hooks/web/useTitle";
-import { useLocale } from "/@/locales/useLocale";
-
-// support Multi-language
-const { getAntdLocale } = useLocale();
-
-// Listening to page changes and dynamically changing site titles
-useTitle();
+import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
 </script>
+
+<template>
+  <el-config-provider :locale="zhCn">
+    <router-view />
+  </el-config-provider>
+</template>

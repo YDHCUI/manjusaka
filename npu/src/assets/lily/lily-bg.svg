@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 640">
+  <title>曼珠沙华</title>
+  <defs>
+    <linearGradient id="stemG" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#16351f"/>
+      <stop offset="1" stop-color="#3f6d48"/>
+    </linearGradient>
+    <linearGradient id="tpG" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#7e1220"/>
+      <stop offset="0.5" stop-color="#b01f30"/>
+      <stop offset="1" stop-color="#d83848"/>
+    </linearGradient>
+    <radialGradient id="fog">
+      <stop offset="0" stop-color="#3a0a12" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#3a0a12" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="mist">
+      <stop offset="0" stop-color="#1c2430" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#1c2430" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- 花被片: 细长, 边缘微皱, 弧形外展 -->
+    <path id="tp" d="M-0.6,-4 C-2,-13 -4.6,-25 -9.4,-35.5 C-12.4,-41 -15.8,-45.4 -19.2,-48.6 C-20.6,-49.8 -21.8,-49.2 -21.2,-47.4 C-20.6,-45.4 -18.4,-42 -15.8,-37.8 C-11.4,-30 -6.8,-19.6 -3.9,-11 C-2.9,-8 -2.2,-5.6 -1.6,-4.2 Z"
+          fill="url(#tpG)" stroke="#5e0d18" stroke-opacity="0.35" stroke-width="0.5"/>
+    <!-- 雄蕊: 花丝细长拱出, 明显长于花被片, 顶端线形花药 -->
+    <g id="st">
+      <path d="M-0.4,-3 C-1.6,-16 -4.6,-32 -9.4,-45 C-11.6,-50.6 -14.6,-56 -18.4,-60.6" fill="none" stroke="#a8202f" stroke-width="1.6" stroke-linecap="round"/>
+      <ellipse cx="-19" cy="-61.5" rx="1.4" ry="3.6" transform="rotate(30 -19 -61.5)" fill="#74121e"/>
+    </g>
+    <!-- 单朵花: 花被管 + 6被片 + 6雄蕊 + 花柱 -->
+    <g id="bloom">
+      <path d="M-1.6,3 C-1.4,-1.5 -1.2,-5.5 0,-7.5 C1.2,-5.5 1.4,-1.5 1.6,3 Z" fill="#6e232b"/>
+      <use href="#tp"/>
+      <use href="#tp" transform="rotate(60)"/>
+      <use href="#tp" transform="rotate(120)"/>
+      <use href="#tp" transform="rotate(180)"/>
+      <use href="#tp" transform="rotate(240)"/>
+      <use href="#tp" transform="rotate(300)"/>
+      <use href="#st" transform="rotate(30)"/>
+      <use href="#st" transform="rotate(90)"/>
+      <use href="#st" transform="rotate(150)"/>
+      <use href="#st" transform="rotate(210)"/>
+      <use href="#st" transform="rotate(270)"/>
+      <use href="#st" transform="rotate(330)"/>
+      <path d="M0,-4 C-0.6,-18 -1.2,-38 -1.8,-56" fill="none" stroke="#c25056" stroke-width="1.7" stroke-linecap="round"/>
+      <circle cx="-1.8" cy="-57.5" r="1.5" fill="#6b1220"/>
+    </g>
+    <!-- 花蕾: 红苞带绿鞘 -->
+    <g id="bud">
+      <path d="M-1.4,0 C-2,-9 -1.4,-18 0.6,-24 C1.4,-25.6 2.4,-25 2.8,-23.4 C4.6,-16 3.8,-7 2.2,0 Z" fill="url(#tpG)"/>
+      <path d="M-1.4,0 C-2,-9 -1.4,-18 0.6,-24" fill="none" stroke="#4c6b45" stroke-width="1.1" opacity="0.8"/>
+    </g>
+  </defs>
+
+  <!-- 顶部冷雾 / 底部暗雾 (融入深色背景) -->
+  <ellipse cx="350" cy="20" rx="440" ry="150" fill="url(#mist)"/>
+  <ellipse cx="480" cy="655" rx="420" ry="190" fill="url(#fog)" opacity="0.75"/>
+
+  <!-- 远景虚化花葶 (景深) -->
+  <g opacity="0.3" stroke="#12241a" fill="none" stroke-linecap="round">
+    <path d="M235,640 C228,540 220,470 205,420" stroke-width="3"/>
+    <path d="M170,640 C166,560 160,500 150,450" stroke-width="2.6"/>
+    <ellipse cx="204" cy="414" rx="4" ry="8" fill="#12241a" stroke="none"/>
+    <ellipse cx="149" cy="444" rx="3.5" ry="7" fill="#12241a" stroke="none"/>
+  </g>
+
+  <!-- 地面阴影 -->
+  <ellipse cx="510" cy="646" rx="270" ry="42" fill="#0a0f0c" opacity="0.55"/>
+
+  <!-- ============ 主花葶: 伞形花序 3 花 2 蕾 ============ -->
+  <g>
+    <animateTransform attributeName="transform" type="rotate" values="-1.1 452 640; 0.9 452 640; -1.1 452 640" keyTimes="0;0.5;1" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1" dur="9.5s" repeatCount="indefinite"/>
+    <path d="M447,640 C441,520 435,350 430,215 L436,214 C441,350 449,520 456,640 Z" fill="url(#stemG)"/>
+    <g fill="none" stroke="#55624a" stroke-linecap="round">
+      <path d="M428,224 C424,216 420,210 414,205" stroke-width="1.8" opacity="0.8"/>
+      <path d="M438,226 C440,217 444,211 450,206" stroke-width="1.6" opacity="0.7"/>
+    </g>
+    <use href="#bud" transform="translate(394,218) rotate(-85) scale(0.6)"/>
+    <use href="#bud" transform="translate(444,198) rotate(-50) scale(0.75)"/>
+    <use href="#bloom" transform="translate(410,224) rotate(-65) scale(1.25)"/>
+    <use href="#bloom" transform="translate(458,224) rotate(25) scale(1.2)"/>
+    <use href="#bloom" transform="translate(436,208) rotate(-25) scale(1.4)"/>
+  </g>
+
+  <!-- ============ 次花葶: 伞形花序 3 花 2 蕾 ============ -->
+  <g>
+    <animateTransform attributeName="transform" type="rotate" values="0.9 546 640; -0.8 546 640; 0.9 546 640" keyTimes="0;0.5;1" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1" dur="11s" repeatCount="indefinite"/>
+    <path d="M541,640 C538,540 522,420 504,298 L510,296 C528,418 548,540 552,640 Z" fill="url(#stemG)"/>
+    <g fill="none" stroke="#55624a" stroke-linecap="round">
+      <path d="M501,310 C498,303 494,297 489,292" stroke-width="1.7" opacity="0.8"/>
+      <path d="M512,311 C514,304 518,298 523,294" stroke-width="1.5" opacity="0.7"/>
+    </g>
+    <use href="#bud" transform="translate(494,284) rotate(-55) scale(0.7)"/>
+    <use href="#bud" transform="translate(524,302) rotate(5) scale(0.6)"/>
+    <use href="#bloom" transform="translate(484,310) rotate(-70) scale(1.2)"/>
+    <use href="#bloom" transform="translate(532,310) rotate(30) scale(1.15)"/>
+    <use href="#bloom" transform="translate(509,294) rotate(-20) scale(1.35)"/>
+  </g>
+
+  <!-- ============ 短花葶: 伞形花序 3 花 1 蕾 ============ -->
+  <g>
+    <animateTransform attributeName="transform" type="rotate" values="-0.8 616 640; 0.7 616 640; -0.8 616 640" keyTimes="0;0.5;1" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1" dur="13s" repeatCount="indefinite"/>
+    <path d="M612,640 C610,570 596,490 574,396 L580,394 C600,488 618,566 621,640 Z" fill="url(#stemG)"/>
+    <g fill="none" stroke="#55624a" stroke-linecap="round">
+      <path d="M571,408 C568,402 565,397 560,393" stroke-width="1.6" opacity="0.8"/>
+      <path d="M582,409 C584,403 587,398 592,394" stroke-width="1.4" opacity="0.7"/>
+    </g>
+    <use href="#bud" transform="translate(570,386) rotate(-45) scale(0.6)"/>
+    <use href="#bloom" transform="translate(556,408) rotate(-60) scale(1.05)"/>
+    <use href="#bloom" transform="translate(598,408) rotate(35) scale(1.0)"/>
+    <use href="#bloom" transform="translate(580,396) rotate(-15) scale(1.15)"/>
+  </g>
+
+  <!-- 底部暗雾 (前) -->
+  <ellipse cx="480" cy="662" rx="390" ry="160" fill="url(#fog)" opacity="0.85"/>
+</svg>

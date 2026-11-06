@@ -1,0 +1,1 @@
+import{C as r,_ as t}from"./index-Ba2EZ1Zo.js";function n(){const e=r();if(e.licenseValid)return!0;const s=e.license.state==="expired"?"软件授权已过期，无法使用 NPC2 功能，请联系管理员续期":"未找到有效授权，无法使用 NPC2 功能，请联系管理员获取 license";return t.error(s),!1}export{n as l};

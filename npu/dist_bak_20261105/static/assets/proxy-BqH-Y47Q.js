@@ -1,0 +1,1 @@
+import{ah as r}from"./index-Ba2EZ1Zo.js";function p(){return r.post("/proxylist",{})}function s(o){return r.post("/proxyadd",o)}function n(o){return r.post("/proxystop",{id:o})}export{n as a,s as b,p};

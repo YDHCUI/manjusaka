@@ -20,7 +20,7 @@
 </div>
 
 
-## 牛屎虾
+## 牛屎花
 
 https://github.com/ydhcui/manjusaka
 
